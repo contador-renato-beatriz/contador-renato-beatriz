@@ -16,6 +16,10 @@ function atualizarContador() {
   const meses = (anos * 12) + (agora.getMonth());
   const tpmDias = meses * 5;
   document.getElementById("tpm").textContent = `${tpmDias} dias`;
+  // Cálculo das viagens desde 2007
+const anoAtual = new Date().getFullYear();
+const viagens = anoAtual - 2007 + 1;
+document.getElementById("viagens").textContent = `${viagens} viagens`;
 }
 
 atualizarContador();
