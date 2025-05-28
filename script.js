@@ -1,26 +1,30 @@
-function atualizarContador() {
-  const inicio = new Date("1999-10-16T00:00:00");
+window.addEventListener('DOMContentLoaded', () => {
+  const dataInicio = new Date("1999-10-16T00:00:00");
   const agora = new Date();
-  const diff = agora - inicio;
 
-  const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutos = Math.floor((diff / (1000 * 60)) % 60);
-  const segundos = Math.floor((diff / 1000) % 60);
+  const diffMs = agora - dataInicio;
 
-  document.getElementById("contador").textContent =
-    `${dias} dias, ${horas}h ${minutos}min ${segundos}s`;
+  const dias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diffMs / (1000 * 60 * 60)) % 24);
+  const minutos = Math.floor((diffMs / (1000 * 60)) % 60);
+  const segundos = Math.floor((diffMs / 1000) % 60);
 
-  // TPM estimada (5 dias por mês)
-  const anos = (agora.getFullYear() - 1999);
-  const meses = (anos * 12) + (agora.getMonth());
-  const tpmDias = meses * 5;
-  document.getElementById("tpm").textContent = `${tpmDias} dias`;
-  // Cálculo das viagens desde 2007
-const anoAtual = new Date().getFullYear();
-const viagens = anoAtual - 2007 + 1;
-document.getElementById("viagens").textContent = `${viagens} viagens`;
-}
+  document.getElementById("tempo-juntos").textContent =
+    `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos de amor.`;
 
-atualizarContador();
-setInterval(atualizarContador, 1000);
+  // Cálculo de xícaras de café
+  const xicarasPorDia = 3;
+  const totalXicaras = dias * xicarasPorDia;
+  document.getElementById("cafe").textContent = totalXicaras.toLocaleString("pt-BR");
+
+  // TPM estimada
+  const ciclosPorAno = 12;
+  const anosJuntos = agora.getFullYear() - 1999 + (agora.getMonth() >= 9 ? 1 : 0);
+  const tpmEstimadas = anosJuntos * ciclosPorAno;
+  document.getElementById("tpm").textContent = `${tpmEstimadas} ciclos`;
+
+  // Viagens desde 2007
+  const anoAtual = agora.getFullYear();
+  const viagens = anoAtual - 2007 + 1;
+  document.getElementById("viagens").textContent = `${viagens} viagens`;
+});
