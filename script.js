@@ -1,31 +1,34 @@
+const startDate = new Date("1999-10-16T00:00:00");
+const now = () => new Date();
+
 function updateCounter() {
-  const startDate = new Date('1999-10-16T00:00:00');
-  const now = new Date();
-  const diff = now - startDate;
+  const current = now();
+  const diff = current - startDate;
 
-  const seconds = Math.floor(diff / 1000);
-  const minutes = Math.floor(diff / (1000 * 60));
-  const hours = Math.floor(diff / (1000 * 60 * 60));
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const months = Math.floor(days / 30.44); // média de dias por mês
-  const years = now.getFullYear() - startDate.getFullYear();
+  const totalSeconds = Math.floor(diff / 1000);
+  const totalMinutes = Math.floor(totalSeconds / 60);
+  const totalHours = Math.floor(totalMinutes / 60);
+  const totalDays = Math.floor(totalHours / 24);
+  const totalMonths = Math.floor(totalDays / 30.4375);
+  const totalYears = Math.floor(totalMonths / 12);
 
-  document.getElementById('timeTogether').innerText =
-    `${years} anos, ${months % 12} meses, ${days % 30} dias, ${hours % 24} horas, ${minutes % 60} minutos, ${seconds % 60} segundos`;
+  const remainingMonths = totalMonths % 12;
+  const remainingDays = totalDays % 30.4375;
+  const remainingHours = totalHours % 24;
+  const remainingMinutes = totalMinutes % 60;
+  const remainingSeconds = totalSeconds % 60;
 
-  const coffeeCupsPerDay = 3;
-  const estimatedCups = coffeeCupsPerDay * days;
-  document.getElementById('coffeeCups').innerText = estimatedCups.toLocaleString('pt-BR');
+  document.getElementById("years").textContent = totalYears;
+  document.getElementById("months").textContent = remainingMonths;
+  document.getElementById("days").textContent = Math.floor(remainingDays);
+  document.getElementById("hours").textContent = remainingHours;
+  document.getElementById("minutes").textContent = remainingMinutes;
+  document.getElementById("seconds").textContent = remainingSeconds;
 
-  const currentYear = now.getFullYear();
-  const travelStartYear = 2007;
-  const totalTravels = currentYear - travelStartYear + 1;
-  document.getElementById('travels').innerText = totalTravels;
-
-  const tpmDays = Math.floor((days / 28) * 5); // 5 dias de TPM a cada 28 dias
-  document.getElementById('tpmDays').innerText = tpmDays.toLocaleString('pt-BR');
+  document.getElementById("coffee").textContent = totalDays * 3;
+  document.getElementById("trips").textContent = Math.max(0, current.getFullYear() - 2007 + 1);
+  document.getElementById("tpm").textContent = Math.floor(totalMonths * 5);
 }
 
-// Atualiza imediatamente e depois a cada segundo
-updateCounter();
 setInterval(updateCounter, 1000);
+updateCounter();
