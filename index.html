@@ -3,23 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Renato & Beatriz</title>
+  <title>Renato & Beatriz - Desde 1999</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Renato & Beatriz</h1>
-    <p>Juntos desde <strong>16/10/1999</strong></p>
-    <div class="contador">
-      <p id="tempo-juntos">Carregando...</p>
+    <h1>Renato e Beatriz</h1>
+    <p class="since">Desde <strong>16/10/1999</strong></p>
+
+    <div class="timer">
+      <p><strong>Tempo juntos:</strong></p>
+      <p id="timeTogether">Calculando...</p>
     </div>
-    <ul>
-      <li>☕ Estimadas <span id="cafe">calculando...</span> xícaras de café juntos</li>
-      <li>✈️ Viagens juntos desde 2007: <span id="viagens">calculando...</span></li>
-      <li>💥 Dias de TPM estimados: <span id="tpm">calculando...</span></li>
-    </ul>
-    <p class="frase">"Mais que números, são memórias que constroem a nossa história."</p>
+
+    <div class="details">
+      <p><strong>Xícaras de café estimadas:</strong> <span id="coffeeCups">Calculando...</span></p>
+      <p><strong>Viagens juntos desde 2007:</strong> <span id="travels">Calculando...</span></p>
+      <p><strong>Dias de TPM estimados:</strong> <span id="tpmDays">Calculando...</span></p>
+    </div>
+
+    <p class="quote">Mais que números, são memórias que constroem a nossa história.</p>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
