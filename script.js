@@ -7,7 +7,7 @@ function updateCounter() {
   const minutes = Math.floor(diff / (1000 * 60));
   const hours = Math.floor(diff / (1000 * 60 * 60));
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const months = Math.floor(days / 30.44); // média
+  const months = Math.floor(days / 30.44); // média de dias por mês
   const years = now.getFullYear() - startDate.getFullYear();
 
   document.getElementById('timeTogether').innerText =
@@ -26,5 +26,6 @@ function updateCounter() {
   document.getElementById('tpmDays').innerText = tpmDays.toLocaleString('pt-BR');
 }
 
-setInterval(updateCounter, 1000);
+// Atualiza imediatamente e depois a cada segundo
 updateCounter();
+setInterval(updateCounter, 1000);
