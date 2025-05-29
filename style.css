@@ -1,48 +1,58 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fff9f0;
-  color: #3a3a3a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: #fff;
+  font-family: 'Alex Brush', cursive;
   text-align: center;
-  min-height: 100vh;
+  color: #222;
   margin: 0;
+  padding: 0;
 }
 
 .container {
-  background-color: #ffffff;
   padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  width: 90%;
+  max-width: 800px;
+  margin: auto;
 }
 
-h1 {
+.names {
+  font-size: 3rem;
+}
+
+.heart {
+  color: red;
+}
+
+h2 {
   font-size: 2rem;
-  margin-bottom: 0.2rem;
-  color: #d45b5b;
-}
-
-.since {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 1.5rem;
+  margin-top: 1rem;
 }
 
 .timer {
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.timer div {
+  border: 2px solid #123;
+  padding: 1rem;
+  min-width: 80px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+
+.timer p {
+  margin: 0.5rem 0 0;
   font-size: 1.2rem;
 }
 
-.details {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
+.info {
+  margin: 2rem 0;
+  font-size: 1.3rem;
 }
 
-.quote {
-  font-style: italic;
-  font-size: 1rem;
-  color: #777;
+.footer {
+  font-size: 1.4rem;
+  margin-top: 2rem;
 }
