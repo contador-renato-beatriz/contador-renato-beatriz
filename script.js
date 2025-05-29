@@ -1,30 +1,30 @@
-window.addEventListener('DOMContentLoaded', () => {
-  const dataInicio = new Date("1999-10-16T00:00:00");
-  const agora = new Date();
+function updateCounter() {
+  const startDate = new Date('1999-10-16T00:00:00');
+  const now = new Date();
+  const diff = now - startDate;
 
-  const diffMs = agora - dataInicio;
+  const seconds = Math.floor(diff / 1000);
+  const minutes = Math.floor(diff / (1000 * 60));
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const months = Math.floor(days / 30.44); // média
+  const years = now.getFullYear() - startDate.getFullYear();
 
-  const dias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-  const horas = Math.floor((diffMs / (1000 * 60 * 60)) % 24);
-  const minutos = Math.floor((diffMs / (1000 * 60)) % 60);
-  const segundos = Math.floor((diffMs / 1000) % 60);
+  document.getElementById('timeTogether').innerText =
+    `${years} anos, ${months % 12} meses, ${days % 30} dias, ${hours % 24} horas, ${minutes % 60} minutos, ${seconds % 60} segundos`;
 
-  document.getElementById("tempo-juntos").textContent =
-    `${dias} dias, ${horas} horas, ${minutos} minutos e ${segundos} segundos de amor.`;
+  const coffeeCupsPerDay = 3;
+  const estimatedCups = coffeeCupsPerDay * days;
+  document.getElementById('coffeeCups').innerText = estimatedCups.toLocaleString('pt-BR');
 
-  // Cálculo de xícaras de café
-  const xicarasPorDia = 3;
-  const totalXicaras = dias * xicarasPorDia;
-  document.getElementById("cafe").textContent = totalXicaras.toLocaleString("pt-BR");
+  const currentYear = now.getFullYear();
+  const travelStartYear = 2007;
+  const totalTravels = currentYear - travelStartYear + 1;
+  document.getElementById('travels').innerText = totalTravels;
 
-  // TPM estimada
-  const ciclosPorAno = 12;
-  const anosJuntos = agora.getFullYear() - 1999 + (agora.getMonth() >= 9 ? 1 : 0);
-  const tpmEstimadas = anosJuntos * ciclosPorAno;
-  document.getElementById("tpm").textContent = `${tpmEstimadas} ciclos`;
+  const tpmDays = Math.floor((days / 28) * 5); // 5 dias de TPM a cada 28 dias
+  document.getElementById('tpmDays').innerText = tpmDays.toLocaleString('pt-BR');
+}
 
-  // Viagens desde 2007
-  const anoAtual = agora.getFullYear();
-  const viagens = anoAtual - 2007 + 1;
-  document.getElementById("viagens").textContent = `${viagens} viagens`;
-});
+setInterval(updateCounter, 1000);
+updateCounter();
