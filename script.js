@@ -1,34 +1,34 @@
-const startDate = new Date("1999-10-16T00:00:00");
-const now = () => new Date();
+function updateCounters() {
+  const startDate = new Date("1999-10-16T00:00:00");
+  const now = new Date();
+  const diff = now - startDate;
 
-function updateCounter() {
-  const current = now();
-  const diff = current - startDate;
+  const years = now.getFullYear() - startDate.getFullYear();
+  const months = (now.getMonth() - startDate.getMonth() + 12) % 12;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24)) % 30;
 
-  const totalSeconds = Math.floor(diff / 1000);
-  const totalMinutes = Math.floor(totalSeconds / 60);
-  const totalHours = Math.floor(totalMinutes / 60);
-  const totalDays = Math.floor(totalHours / 24);
-  const totalMonths = Math.floor(totalDays / 30.4375);
-  const totalYears = Math.floor(totalMonths / 12);
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
 
-  const remainingMonths = totalMonths % 12;
-  const remainingDays = totalDays % 30.4375;
-  const remainingHours = totalHours % 24;
-  const remainingMinutes = totalMinutes % 60;
-  const remainingSeconds = totalSeconds % 60;
+  document.getElementById("years").textContent = years;
+  document.getElementById("months").textContent = months;
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = hours;
+  document.getElementById("minutes").textContent = minutes;
+  document.getElementById("seconds").textContent = seconds;
 
-  document.getElementById("years").textContent = totalYears;
-  document.getElementById("months").textContent = remainingMonths;
-  document.getElementById("days").textContent = Math.floor(remainingDays);
-  document.getElementById("hours").textContent = remainingHours;
-  document.getElementById("minutes").textContent = remainingMinutes;
-  document.getElementById("seconds").textContent = remainingSeconds;
+  // Cálculo de extras
+  const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const coffee = totalDays * 3;
+  const travelYears = now.getFullYear() - 2007 + (now.getMonth() >= 0 ? 1 : 0);
+  const tpmDays = (years * 12 + months) * 5;
 
-  document.getElementById("coffee").textContent = totalDays * 3;
-  document.getElementById("trips").textContent = Math.max(0, current.getFullYear() - 2007 + 1);
-  document.getElementById("tpm").textContent = Math.floor(totalMonths * 5);
+  document.getElementById("coffee").textContent = coffee;
+  document.getElementById("travels").textContent = travelYears;
+  document.getElementById("tpm").textContent = tpmDays;
 }
 
-setInterval(updateCounter, 1000);
-updateCounter();
+// Atualizar a cada segundo
+updateCounters();
+setInterval(updateCounters, 1000);
